@@ -27,26 +27,7 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/admin.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.3/bootbox.js"></script> -->
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <title>Document</title>
@@ -60,7 +41,7 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
 
     <div class="container py-5 h-100 ">
         <div class="row d-flex justify-content-center align-items-center h-100 ">
-            <div id="passwordBlock" class="col col-lg-6 mb-4  mb-lg-0 bg-dark">
+            <div id="passwordForm" class="col col-lg-6 mb-4  mb-lg-0 bg-dark">
 
                 <form class="row no-wrap p-2 border border-1  bg-body shadow rounded needs-validation" novalidate action="editProfile.php" method="post">
                     <nav class="navbar border border-2 bg-primary  shadow mb-4">
@@ -104,24 +85,42 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
                     </nav>
                     <br><br>
 
-                    <div class=" row d-flex justify-content-center">
+                    <div class="row d-flex justify-content-center passwordEdit">
                         <div class="col-md-8">
                             <label for="input6" class="form-label">Password</label>
-                            <input type="password" class="form-control" name="passwords" placeholder="password" id="validationServer05" required>
+                            <!-- <input type="password" class="form-control" name="passwords" placeholder="password" id="validationServer05" required>
                             <div class="valid-feedback"></div>
-                            <div class="invalid-tooltip">Champ invalide</div>
+                            <div class="invalid-tooltip">Champ invalide</div> -->
+                            <div class="input-group">
+                                <input type="password" style="max-width: 92%;" name="passwords" placeholder="password" class="form-control passwords " id="validationServer01" required>
+                                <span class="input-group-text bg-light " style="border:none; " onclick="togglePassword()"><i class="bi bi-eye-slash fs-3 text-primary" id="togglePassword"></i></span>
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-tooltip">champ invalide</div>
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <label for="input6" class="form-label">New Password</label>
-                            <input type="password" class="form-control passwords" name="newPasswords" placeholder="nouveau password" id="validationServer05" required>
+                            <!-- <input type="password" class="form-control passwords" name="newPasswords" placeholder="nouveau password" id="validationServer05" required>
                             <div class="valid-feedback"></div>
-                            <div class="invalid-tooltip">Champ invalide</div>
+                            <div class="invalid-tooltip">Champ invalide</div> -->
+                            <div class="input-group">
+                                <input type="password" style="max-width: 92%;" name="newPasswords" placeholder="nouveau password" class="form-control confirmPassword " id="validationServer02" required>
+                                <span class="input-group-text bg-light " style="border:none; " onclick="togglePasswordConfirm()"><i class="bi bi-eye-slash fs-3 text-primary" id="togglePasswordConfirm"></i></span>
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-tooltip">champ invalide</div>
+                            </div>
                         </div>
                         <div class="col-md-8">
                             <label for="input6" class="form-label">Confirm new Password</label>
-                            <input type="password" onchange="checkPassword()" class="form-control confirmPassword" name="confirmPassword" placeholder="confirmer password" id="validationServer06" required>
+                            <!-- <input type="password" onchange="checkPassword()" class="form-control confirmPassword" name="confirmPassword" placeholder="confirmer password" id="validationServer06" required>
                             <div class="valid-feedback"></div>
-                            <div class="invalid-tooltip">Champ invalide</div>
+                            <div class="invalid-tooltip">Champ invalide</div> -->
+                            <div class="input-group">
+                                <input type="password" style="max-width: 92%;" onchange="checkPassword()" name="confirmPassword" placeholder="confirmer password" class="form-control confirmPassword2 " id="validationServer03" required>
+                                <span class="input-group-text bg-light" style="border:none; " onclick="togglePasswordConfirm2()"><i class="bi bi-eye-slash fs-3 text-primary" id="togglePasswordConfirm2"></i></span>
+                                <div class="valid-feedback"></div>
+                                <div class="invalid-tooltip">champ invalide</div>
+                            </div>
                         </div>
                         <span id="msgPassword" class="text-center p-2" style="display: none; color:red;">
                             <span class=" badge bg-danger ">Passwords different</span>
@@ -138,7 +137,8 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
                             </i>
                         </button>
                         <span class="text text-center mt-4">
-                            <button type="button" onclick="showHide()" class="btn btn-outline-secondary"><i class="bi bi-camera fs-1 fw-bolder"></i></button>
+                            <button type="button" onclick="showHide()" class="btn " title="edit password"><i class="bi bi-camera fs-1 fw-bolder text-primary"></i></button>
+                            <button type="button" onclick="showHideInfo()" class="btn " title="edit info"><i class="bi bi-person-badge fs-1 fw-bolder text-primary"></i></button>
                         </span>
                     </div>
 
@@ -170,8 +170,226 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
             </div>
 
 
+            <div class="col-md-8 mt-4" style="display: none;">
 
 
+
+                <form class="row  d-flex justify-content-center no-wrap p-2 border border-1  bg-body shadow rounded needs-validation" novalidate action="editUser.php" method="post">
+                    <nav class="navbar shadow bg-primary m-2">
+                        <div class="container">
+                            <a class="navbar-brand pe-none  " href="#">
+
+                                <span class="text-center text-dark"> MODIFIER </span>
+                            </a>
+                        </div>
+                    </nav>
+                    <span class=" d-flex justify-content-center">
+                        <?php
+
+                        if (isset($_POST['matricule'], $_POST['nom'], $_POST['prenom'], $_POST['email'])) {
+                            $update = new ModelUser();
+                            $matriculePost = $_POST['matricule'];
+                            $nomPost = $_POST['nom'];
+                            $prenomPost = $_POST['prenom'];
+                            $emailPost = $_POST['email'];
+
+                            $user = new ModelUser();
+
+                            $update = $user->updateUser($matriculePost, $nomPost, $prenomPost, $emailPost);
+
+                            if ($update) {
+                                $url = "localhost/ecole_project/pages/accueil_admin.php";
+                                echo ' 
+                            <a class="navbar-brand pe-none" href="#">
+                                <div   class="d-flex justify-content-center" role="alert">
+                                    <span class="badge bg-success border border-success">Reussie</span>
+                                </div> 
+                            </a> 
+                            <script>
+                                        setTimeout(()=>{
+                                            document.querySelector(".navbar-brand").remove();
+                                            window.location.pathname="/ecole_project/pages/accueil_admin.php";
+                                        },1000)  
+                            </script>
+                            ';
+                            } else {
+                                echo ' 
+                            <div   class="d-flex justify-content-center" role="alert">
+                                <span class="badge bg-danger border border-danger">Email existe déjà!</span>                
+                            </div>
+                            <script>
+                                        setTimeout(()=>{
+                                            document.querySelector(".badge").remove();
+                                        },2000)
+                            </script>
+                        ';
+                            }
+                        }
+
+                        ?>
+                    </span>
+                    <input type='text' name='matricule' value="<?php echo $matricule ?>" hidden>
+                    <div class="col-md-6 mb-2">
+                        <label for="input1" class="form-label">Nom</label>
+                        <input type='text' name='nom' placeholder="nom" class="form-control" id="validationServer01" value="<?php if (isset($nom)) echo $nom ?>" required>
+                        <div class="valid-feedback" id="validationServer01"></div>
+                        <div class="invalid-feedback" id="validationServer01">Champ invalide</div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label for="input2" class="form-label">Prenom</label>
+                        <input type="text" class="form-control" name="prenom" placeholder="prenom" id="validationServer02" value="<?php if (isset($prenom)) echo $prenom ?>" required>
+                        <div class="valid-feedback"> </div>
+                        <div class="invalid-feedback">Champ invalide</div>
+                    </div>
+
+                    <div class="col-md-8 mb-2">
+                        <label for="input3" class="form-label">Email</label>
+                        <input type="email" onchange="ValidateEmail()" class="form-control email" name="email" placeholder="email" id="validationServer03" value="<?php if (isset($email)) echo $email ?>" required>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Email invalide</div>
+                        <div class="invalid-email" style="display: none; color:red;">Email invalide</div>
+
+                    </div>
+
+
+
+                    <div class="row d-flex justify-content-center mt-2">
+                        <button type="submit" class=" m-2 btn btn-success col-sm-2" onclick="hideMsg()">
+                            <i class="spinOff">Modifier</i>
+                            <i class="spinOn" style="display: none">
+                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                Loading...
+                            </i>
+                        </button>
+                        <a href="accueil_admin.php" class="m-2  btn btn-danger col-sm-2">
+                            <i class="spinOff">Annuler</i>
+                            <i class="spinOn" style="display: none">
+                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                Loading...
+                            </i>
+                        </a>
+                    </div>
+
+                    <span class="text text-center mt-2">
+                        <p>Ecole de la reussite</p>
+                    </span>
+                </form>
+
+
+            </div>
+
+            <div class="col-md-8 mt-4 editBlock" style="display: none;">
+
+
+
+                <form class="row  d-flex justify-content-center no-wrap p-2 border border-1  bg-body shadow rounded needs-validation" novalidate action="editProfile.php" method="post">
+                    <nav class="navbar shadow bg-primary m-2">
+                        <div class="container">
+                            <a class="navbar-brand pe-none  " href="#">
+
+                                <span class="text-center text-dark"> MODIFIER </span>
+                            </a>
+                        </div>
+                    </nav>
+                    <span class=" d-flex justify-content-center">
+                        <?php
+
+                        if (isset($_SESSION['matricule'])) {
+                            $matriculeUser = $_SESSION['matricule'];
+                            $nomUser = $_SESSION['nom'];
+                            $prenomUser = $_SESSION['prenom'];
+                            $emailUser = $_SESSION['email'];
+
+                        }
+
+                        if (isset($_POST['matricule'], $_POST['nom'], $_POST['prenom'], $_POST['email'])) {
+                            $update = new ModelUser();
+                            $matriculePost = $_POST['matricule'];
+                            $nomPost = $_POST['nom'];
+                            $prenomPost = $_POST['prenom'];
+                            $emailPost = $_POST['email'];
+
+                            $user = new ModelUser();
+                            var_dump($matriculePost);die;
+                            $update = $user->updateUser($matriculePost, $nomPost, $prenomPost, $emailPost);
+                            
+
+                            
+                            if ($update) {
+                                // $url = "localhost/ecole_project/pages/editProfile.php";
+                                echo ' 
+                            <a class="navbar-brand pe-none" href="#">
+                                <div   class="d-flex justify-content-center" role="alert">
+                                    <span class="badge bg-success border border-success">Reussie</span>
+                                </div> 
+                            </a> 
+                            <script>
+                                        setTimeout(()=>{
+                                            document.querySelector(".navbar-brand").remove();
+                                        },1000)  
+                            </script>
+                            ';
+                            } else {
+                                echo ' 
+                            <div   class="d-flex justify-content-center" role="alert">
+                                <span class="badge bg-danger border border-danger">Email existe déjà!</span>                
+                            </div>
+                            <script>
+                                        setTimeout(()=>{
+                                            document.querySelector(".badge").remove();
+                                        },2000)
+                            </script>
+                        ';
+                            }
+                        }
+
+                        ?>
+                    </span>
+                    <input type='text' name='matricule' value="<?php echo $matriculeUser ?>" hidden>
+                    <div class="col-md-6 mb-2">
+                        <label for="input1" class="form-label">Nom</label>
+                        <input type='text' name='nom' placeholder="nom" class="form-control" id="validationServer01" value="<?php if (isset($nomUser)) echo $nomUser ?>" required>
+                        <div class="valid-feedback" id="validationServer01"></div>
+                        <div class="invalid-feedback" id="validationServer01">Champ invalide</div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <label for="input2" class="form-label">Prenom</label>
+                        <input type="text" class="form-control" name="prenom" placeholder="prenom" id="validationServer02" value="<?php if (isset($prenomUser)) echo $prenomUser ?>" required>
+                        <div class="valid-feedback"> </div>
+                        <div class="invalid-feedback">Champ invalide</div>
+                    </div>
+
+                    <div class="col-md-8 mb-2">
+                        <label for="input3" class="form-label">Email</label>
+                        <input type="email" onchange="ValidateEmail()" class="form-control email" name="email" placeholder="email" id="validationServer03" value="<?php if (isset($emailUser)) echo $emailUser ?>" required>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Email invalide</div>
+                        <div class="invalid-email" style="display: none; color:red;">Email invalide</div>
+
+                    </div>
+
+
+
+                    <div class="row d-flex justify-content-center mt-2">
+                        <button type="submit" class=" m-2 btn btn-success col-sm-2" onclick="hideMsg()">
+                            <i class="spinOff">Modifier</i>
+                            <i class="spinOn" style="display: none">
+                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                Loading...
+                            </i>
+                        </button>
+                        <a href="editProfile.php" class="m-2  btn btn-danger col-sm-2">
+                            <i class="spinOff">Annuler</i>
+                        </a>
+                    </div>
+
+                    <span class="text text-center mt-2">
+                        <p>Ecole de la reussite</p>
+                    </span>
+                </form>
+
+
+            </div>
 
         </div>
     </div>
@@ -191,7 +409,7 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
         function showHide() {
 
             const imgBlock = document.querySelector('.blockImg');
-            const passwordBlock = document.querySelector('#passwordBlock');
+            const passwordBlock = document.querySelector('#passwordForm');
 
             if (imgBlock.style.display == "none") {
                 imgBlock.style.display = "block";
@@ -200,6 +418,57 @@ if (isset($_POST['passwords'], $_POST['newPasswords'])) {
                 imgBlock.style.display = "none"
                 passwordBlock.style.display = "block"
             }
+        }
+
+        function showHideInfo() {
+
+            const imgBlock = document.querySelector('#passwordForm');
+            const passwordBlock = document.querySelector('.editBlock');
+            
+            if (imgBlock.style.display == "none") {
+                imgBlock.style.display = "block";
+                passwordBlock.style.display = "none"
+            } else {
+                imgBlock.style.display = "none"
+                passwordBlock.style.display = "block"
+            }
+        }
+
+        function togglePassword() {
+            const togglePassword = document.querySelector('#togglePassword');
+
+            const password = document.querySelector('.passwords');
+
+
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+
+            password.setAttribute('type', type);
+
+            togglePassword.classList.toggle('bi-eye');
+        }
+
+        function togglePasswordConfirm() {
+            const togglePassword = document.querySelector('#togglePasswordConfirm');
+
+            const password = document.querySelector('.confirmPassword');
+
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+
+            password.setAttribute('type', type);
+
+            togglePassword.classList.toggle('bi-eye');
+        }
+
+        function togglePasswordConfirm2() {
+            const togglePassword = document.querySelector('#togglePasswordConfirm2');
+
+            const password = document.querySelector('.confirmPassword2');
+
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+
+            password.setAttribute('type', type);
+
+            togglePassword.classList.toggle('bi-eye');
         }
     </script>
 </body>

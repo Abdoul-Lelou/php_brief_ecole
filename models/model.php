@@ -66,7 +66,7 @@
         
         public function addUser($nom,$prenom,$email,$passwords,$roles){
             $etat = 1;
-          
+            // var_dump($_FILES);die;
             $roles =='admin' ? $matricule = 'MAD'.$this->generateMatricule() :  $matricule = 'MEM'.$this->generateMatricule();
             $date_inscription = date("Y-m-d H:i:s");
             try {
@@ -92,6 +92,9 @@
                         'date_inscrit' => $date_inscription,
                         'etat' => $etat
                     ));
+
+                    // $userId = 
+
                     return "Utilisateur ajouté";
                 }else{
                     return "email existe déjà";

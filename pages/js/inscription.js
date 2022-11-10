@@ -38,7 +38,7 @@
         const password = document.querySelector('.passwords');
         const confirmPassword = document.querySelector('.confirmPassword');
         // alert(password,confirmPassword)
-
+alert(password.value.length)
         if (password.value != confirmPassword.value) {
             document.getElementById('msgPassword').style.display="block";
             setTimeout(() => {
@@ -47,6 +47,8 @@
                 password.value=""
                 confirmPassword.value="";    
             }, 2000);
+        }else if(password.value.length < 4){
+            alert('no')
         }
 
     }
@@ -69,3 +71,27 @@
         } 
       
       }
+
+      function controlEspace(){
+        const nom = document.querySelector('.nom');
+        const prenom = document.querySelector('.prenom');
+        nom.value= ltrim(nom.value);
+        nom.value= rtrim(nom.value);
+        prenom.value= ltrim(prenom.value);
+        prenom.value= rtrim(prenom.value);
+
+        
+        alert((nom.value))
+    }
+
+
+
+    function ltrim(str) {
+        if(!str) return str;
+        return str.replace(/^\s+/g, '');
+    }
+
+    function rtrim(str) {
+        if(!str) return str;
+        return str.replace(/\s+$/g, '');
+    }

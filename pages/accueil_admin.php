@@ -27,7 +27,11 @@
         include('navbar.php');
         if (isset($_SESSION['email'])) {
             $email_login = $_SESSION['email'];
+        }else{
+            header('location:../index.php');
+            exit;
         }
+
         $bdd = new PDO('mysql:host=localhost;dbname=test;charset=UTF8', 'root', '');
         $reponse = $bdd->query('SELECT COUNT(*) AS total FROM `user` WHERE `etat`= 1');
         $total_lignes = $reponse->fetch()['total'];
@@ -40,7 +44,7 @@
 
 
 
-        $reponse = $bdd->prepare('SELECT * FROM user WHERE `etat`= 1  ORDER BY ID ASC LIMIT :debut, :limite');
+        $reponse = $bdd->prepare('SELECT * FROM user WHERE `etat`= 1   ORDER BY ID ASC LIMIT :debut, :limite');
         $reponse->bindValue('debut', $debut, PDO::PARAM_INT);
         $reponse->bindValue('limite', $limite, PDO::PARAM_INT);
         $reponse->execute() || die('Impossible de charger la page');
@@ -95,6 +99,7 @@
                         <th colspan="7">
                             <nav aria-label="Page navigation example d-flex justify-content-center">
                                 <ul class="pagination">
+                                        <li class="page-item">   
                                     <?php
                                     if ($page > 1) {
                                     ?>
@@ -106,7 +111,6 @@
                                     <?php
                                     } else {
                                         echo '
-                                        <li class="page-item">   
                                             <a class="page-link pe-none  disabled "  href="?page=<?php echo $page - 1; ?>" aria-label="Previous">
                                                 <span class="disabled " aria-hidden="true">&laquo;</span>
                                             </a>
@@ -213,8 +217,8 @@
                             $debut++;
                         
                             echo '<tr>';
-                            if ($donnees = $reponse->fetch()) {
-                                echo '<td class="text-dark">' . $count++ . '</td>';
+                            if ($donnees = $reponse->fetch() ) {
+                                if($donnees['email'] !=$email_login){echo '<td class="text-dark">' . $count++ . '</td>';
                                 echo '<td class="text-dark">' . $donnees['nom'] . '</td>';
                                 echo '<td>' . $donnees['prenom'] . '</td>';
                                 echo '<td>' . $donnees['email'] . '</td>';
@@ -231,7 +235,7 @@
                                 "</span>";
 
 
-                                "</td>";
+                                "</td>";}
                             } else {
                             }
                             echo '</tr>';

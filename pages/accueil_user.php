@@ -21,6 +21,9 @@
         <?php
         session_start();
         include('navbar.php');
+        if (isset($_SESSION['email'])) {
+            $email_login = $_SESSION['email'];
+        }
         ?>
     </header>
 
@@ -202,14 +205,14 @@
                                 
                                 echo '<tr>';                       
                                     if ($donnees = $reponse->fetch() ) {
-                                        echo '<td class="text-dark">' . $count++ . '</td>';
+                                        if($donnees['email'] !=$email_login){echo '<td class="text-dark">' . $count++ . '</td>';
                                         echo '<td class="text-dark">' . $donnees['nom'] . '</td>';
                                         echo '<td>' . $donnees['prenom'] . '</td>';
                                         echo '<td>' . $donnees['email'] . '</td>';
                                         echo '<td>' . $donnees['matricule'] . '</td>';
                                         echo '<td>' . $donnees['roles'] . '</td>';
                                         echo '<td>' . $donnees['date_inscrit'] . '</td>';
-    
+    }
                                     } else {
                                        
                                     }

@@ -21,23 +21,23 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-primary m-2 fixed-top" style="max-height: 8rem;">
         <div class="container-fluid shadow">
-          
-            <img src="../img/simplon.png"  class="navbar-brand  p-2 img-thumbnail" height="50" height="50">
-          
+
+            <img src="../img/simplon.png" class="navbar-brand placeholder-glow p-2 img-thumbnail" height="50" height="50">
+
             <button class="navbar-toggler fs-1" onclick="hideShow()" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon bi bi-menu-button"></span>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav me-auto mb-2 rounded  bg-light shadow  mb-lg-0" style="max-height: 6rem; min-width:70%;">
-                   <span class="d-flex justify-content-between shadow w-100 ml-2">
-                           
-                            <?php  
+                    <span class="d-flex justify-content-between shadow w-100 ml-2">
 
-                                if (isset($_SESSION['roles'])) {
-                                    if ($_SESSION['roles'] == "admin") {
-                                        echo'
+                        <?php
+
+                        if (isset($_SESSION['roles'])) {
+                            if ($_SESSION['roles'] == "admin") {
+                                echo '
                                             <span class="d-flex  ">
                                                 <li class="nav-item nav-link ">
                                                     <a class="nav-link  btn-light border shadow  rounded-circle" title="Users" aria-current="page" href="accueil_admin.php">
@@ -56,89 +56,85 @@
                                                 </li>                              
                                             </span>
                                         ';
-                                    } else {
-                                        echo'
+                            } else {
+                                echo '
                                             <span class="d-flex  ">
                                                 <li class="nav-item nav-link ">
                                                     <a class="nav-link  btn-light border shadow  rounded-circle" title="Users" aria-current="page" href="accueil_user.php">
                                                         <i class=" bi-people fs-1  p-2 fw-bolder " ></i>
                                                     </a>
                                                 </li>
-                                                <li class="nav-item nav-link ">
-                                                    <a class="nav-link btn-light border shadow rounded-circle" title="Archives" href="archive_user.php" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
-                                                        <i class=" bi-archive p-2 fs-1 fw-bolder" ></i>
-                                                    </a>
-                                                </li>    
+                                                
                                                                        
                                             </span>
                                         ';
-                                    }
-                                      
-                                echo '';
-                                }
-                            ?>
+                            }
 
-                            
-                           <hr class="divider">
-                           <h5 class="text-muted">ÉCOLE DE LA RÉUSSITE </h5>
-                    
+                            echo '';
+                        }
+                        ?>
 
-                            <li class=" nav-item  dropdown " >
-                                
-                                <a class="nav-link  d-sm-flex justify-content-center shadow bg-body text-dark text-decoration-none" title="Avatar" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="max-height: 5.7rem;">
-                                    
-                                    <?php  
+
+                        <hr class="divider">
+                        <h5 class="text-muted">ÉCOLE DE LA RÉUSSITE </h5>
+
+
+                        <li class=" nav-item  dropdown ">
+
+                            <a class="nav-link  d-sm-flex justify-content-center shadow bg-body text-dark text-decoration-none" title="Avatar" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="max-height: 5.7rem;">
+
+                                <?php
 
                                 $db = new PDO('mysql:host=localhost;dbname=test;charset=UTF8', 'root', '');
-                                
+
                                 if (isset($_SESSION['id'])) {
                                     $id = $_SESSION['id'];
                                 }
-                                
-                                $result = $db->query("SELECT * FROM images WHERE user='.$id.' "); 
-                                
+
+                                $result = $db->query("SELECT * FROM images WHERE user='.$id.' ");
+
                                 ?>
 
-                                <?php if($result){ ?> 
-                                    
-                                        <?php
-                                        
-                                            while($row = $result->fetch()){
-                                                
-                                        
-                                                     
-                                            ?> 
-                                                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['photo']); ?>" class="rounded-circle border m-1   "  height="40" />             
-                                            <?php
-                                            
-                                            } ?> 
-                                    
-                        
-                                    
+                                <?php if ($result) { ?>
+
+                                    <?php
+
+                                    while ($row = $result->fetch()) {
+
+
+
+                                    ?>
+                                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['photo']); ?>" class="rounded-circle border m-1   " height="40" />
+                                    <?php
+
+                                    } ?>
+
+
+
                                 <?php } ?>
-                                        <p class="d-block">
-                                            <?php    
-                                                if (isset($_SESSION['nom'],$_SESSION['prenom'],$_SESSION['matricule'])) {
-                                                echo '<span class="d-none d-sm-inline ">'.$_SESSION['prenom']." ".$_SESSION['nom'].'</span> <br>
-                                                      <span class="d-none d-sm-inline ">'.$_SESSION['matricule'].'</span>';
-                                                }
-                                            ?>
-                                            
-                                        </p>
-                                  
-                                </a>
-                                <ul class="dropdown-menu w-25" aria-labelledby="navbarDropdown">
-                                    <li><a  class="dropdown-item" href="avatar.php"><i class=" bi-gear p-2 fs-1 fw-bolder" ></i>profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="../index.php"><i class="bi bi-box-arrow-left p-2 fs-1"></i>Déconnecter</a></li>
-                                
-                                    
-                                    
-                                </ul>
-                            </li>
-                   </span>
+                                <p class="d-block">
+                                    <?php
+                                    if (isset($_SESSION['nom'], $_SESSION['prenom'], $_SESSION['matricule'])) {
+                                        echo '<span class="d-none d-sm-inline ">' . $_SESSION['prenom'] . " " . $_SESSION['nom'] . '</span> <br>
+                                                      <span class="d-none d-sm-inline ">' . $_SESSION['matricule'] . '</span>';
+                                    }
+                                    ?>
+
+                                </p>
+
+                            </a>
+                            <ul class="dropdown-menu w-25" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="avatar.php"><i class=" bi-gear p-2 fs-1 fw-bolder"></i>profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../index.php"><i class="bi bi-box-arrow-left p-2 fs-1"></i>Déconnecter</a></li>
+
+
+
+                            </ul>
+                        </li>
+                    </span>
 
                 </ul>
 
